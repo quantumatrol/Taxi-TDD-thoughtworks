@@ -1,4 +1,4 @@
-module.exports = function main(distance,parkTime) {
+module.exports = function main(inputs) {
     // write your code here...
     const feeForDistance = 0.8;
     const startingFee = 6;//for first 2km
@@ -7,22 +7,22 @@ module.exports = function main(distance,parkTime) {
     const extraFeeRate = 0.5;
     const startingDistance = 2;
 
-    var price = 0;
+    var summary = 0;
     //distance = 2;
     //parkTime = 0;
 
-    if(distance > startingDistance)
+    if(inputs.distance > startingDistance)
     {
-        if(distance > extraFeeDistance)//高于加费里程
-            price = startingFee + feeForParkTime*parkTime + (distance-startingDistance)*feeForDistance 
-                + (distance-extraFeeDistance)*feeForDistance*extraFeeRate;
+        if(inputs.distance > extraFeeDistance)//高于加费里程
+            summary = startingFee + feeForParkTime*inputs.parkTime + (inputs.distance-startingDistance)*feeForDistance 
+                + (inputs.distance-extraFeeDistance)*feeForDistance*extraFeeRate;
         else
-            price = startingFee + feeForParkTime*parkTime + (distance-startingDistance)*feeForDistance;
+            summary = startingFee + feeForParkTime*inputs.parkTime + (inputs.distance-startingDistance)*feeForDistance;
     }
     else//起步价
-        price = startingFee + feeForParkTime*parkTime;
+        summary = startingFee + feeForParkTime*inputs.parkTime;
 
-    //console.log(Math.round(price));
+    //console.log(Math.round(summary));
 
-    return Math.round(price);
+    return Math.round(summary);
 };
